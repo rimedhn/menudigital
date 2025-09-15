@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos de Pizza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-red-600 text-white py-4 mb-6">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl md:text-3xl font-bold text-center">🍕 Pizzería Deliciosa</h1>
+            <p class="text-center mt-2 text-red-100">Los mejores sabores para ti</p>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-4 md:p-6 lg:p-8">
+        <!-- Filtros de categorías -->
+        <div class="mb-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Categorías</h2>
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filtrarCategoria('todas')" class="categoria-btn bg-red-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-red-700 transition duration-300">
+                    Todas
+                </button>
+                <button onclick="filtrarCategoria('pizzas')" class="categoria-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition duration-300">
+                    🍕 Pizzas
+                </button>
+                <button onclick="filtrarCategoria('bebidas')" class="categoria-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition duration-300">
+                    🥤 Bebidas
+                </button>
+                <button onclick="filtrarCategoria('entradas')" class="categoria-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition duration-300">
+                    🥖 Entradas
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid de productos con mobile-first approach -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productos-grid">
+            
+            <!-- PIZZAS -->
+            <!-- Producto 1: HUT CHEESE MEDIANA -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="pizzas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-yellow-200 to-orange-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🧀</div>
+                            <div class="text-sm font-semibold text-gray-700">Pizza Hut Cheese</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">HUT CHEESE MEDIANA</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Pizza Hut Cheese en presentación de cuatro porciones cargadas con abundante queso mozzarella a la orilla.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 130.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-1" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-1" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('HUT CHEESE MEDIANA', 130, 'quantity-1')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2: PIZZA PEPPERONI -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="pizzas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-red-200 to-red-400 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🍕</div>
+                            <div class="text-sm font-semibold text-gray-700">Pizza Pepperoni</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">PIZZA PEPPERONI</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">La clásica pizza de pepperoni con el toque especial de la casa. Perfecta combinación de sabores.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 145.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-2" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-2" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('PIZZA PEPPERONI', 145, 'quantity-2')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3: PIZZA HAWAIANA -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="pizzas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-yellow-200 to-pink-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🍍</div>
+                            <div class="text-sm font-semibold text-gray-700">Pizza Hawaiana</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">PIZZA HAWAIANA</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Deliciosa combinación de jamón y piña sobre una base de queso mozzarella. Un sabor tropical único.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 155.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-3" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-3" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('PIZZA HAWAIANA', 155, 'quantity-3')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 4: PIZZA SUPREMA -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="pizzas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-green-200 to-red-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🥓</div>
+                            <div class="text-sm font-semibold text-gray-700">Pizza Suprema</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">PIZZA SUPREMA</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">La pizza más completa con pepperoni, jamón, pimientos, cebolla, champiñones y aceitunas.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 175.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-4" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-4" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('PIZZA SUPREMA', 175, 'quantity-4')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 5: PIZZA VEGETARIANA -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="pizzas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🥬</div>
+                            <div class="text-sm font-semibold text-gray-700">Pizza Vegetariana</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">PIZZA VEGETARIANA</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Fresca combinación de vegetales: pimientos, cebolla, champiñones, tomate y aceitunas sobre queso mozzarella.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 140.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-5" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-5" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('PIZZA VEGETARIANA', 140, 'quantity-5')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 6: PIZZA MARGHERITA -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="pizzas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-red-200 to-green-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🍅</div>
+                            <div class="text-sm font-semibold text-gray-700">Pizza Margherita</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">PIZZA MARGHERITA</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">La clásica italiana con tomate fresco, mozzarella y albahaca. Simplicidad y sabor en cada bocado.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 125.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-6" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-6" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('PIZZA MARGHERITA', 125, 'quantity-6')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEBIDAS -->
+            <!-- Coca Cola -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="bebidas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🥤</div>
+                            <div class="text-sm font-semibold text-white">Coca Cola</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">COCA COLA 600ML</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Refrescante bebida gaseosa Coca Cola en presentación de 600ml. Perfecta para acompañar tu pizza.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 25.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-7" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-7" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('COCA COLA 600ML', 25, 'quantity-7')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sprite -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="bebidas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🥤</div>
+                            <div class="text-sm font-semibold text-white">Sprite</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">SPRITE 600ML</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Bebida gaseosa con sabor a limón-lima. Refrescante y burbujeante, ideal para cualquier momento.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 25.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-8" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-8" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('SPRITE 600ML', 25, 'quantity-8')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agua -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="bebidas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-blue-200 to-blue-400 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">💧</div>
+                            <div class="text-sm font-semibold text-gray-700">Agua Pura</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">AGUA PURA 500ML</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Agua purificada en botella de 500ml. La opción más saludable para hidratarte.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 15.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-9" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-9" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('AGUA PURA 500ML', 15, 'quantity-9')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENTRADAS -->
+            <!-- Pan de Ajo -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="entradas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-yellow-300 to-orange-400 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🥖</div>
+                            <div class="text-sm font-semibold text-gray-700">Pan de Ajo</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">PAN DE AJO</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Delicioso pan tostado con mantequilla de ajo y hierbas. Perfecto para compartir como entrada.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 45.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-10" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-10" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('PAN DE AJO', 45, 'quantity-10')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alitas de Pollo -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="entradas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-orange-300 to-red-400 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🍗</div>
+                            <div class="text-sm font-semibold text-gray-700">Alitas BBQ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">ALITAS BBQ (6 PIEZAS)</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Jugosas alitas de pollo bañadas en salsa BBQ. Servidas con aderezo ranch.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 85.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-11" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-11" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('ALITAS BBQ (6 PIEZAS)', 85, 'quantity-11')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Papas Fritas -->
+            <div class="producto-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300" data-categoria="entradas">
+                <div class="relative h-48">
+                    <div class="w-full h-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">🍟</div>
+                            <div class="text-sm font-semibold text-gray-700">Papas Fritas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">PAPAS FRITAS GRANDES</h2>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">Crujientes papas fritas doradas, sazonadas con sal marina. Porción generosa para compartir.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-gray-900">LPS. 35.00</span>
+                        </div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <label for="quantity-12" class="text-sm font-medium text-gray-700">CANTIDAD:</label>
+                            <input type="number" id="quantity-12" value="1" min="1" class="w-16 px-2 py-1 border border-gray-300 rounded-md text-center">
+                            <button onclick="ordenarProducto('PAPAS FRITAS GRANDES', 35, 'quantity-12')" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-300">ORDENAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botones flotantes -->
+    <!-- Botón del carrito -->
+    <button id="carrito-flotante" onclick="abrirModal()" class="fixed bottom-20 right-4 bg-red-600 text-white p-4 rounded-full shadow-lg hover:bg-red-700 transition duration-300 z-40 hidden">
+        <div class="relative">
+            🛒
+            <span id="contador-carrito" class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">0</span>
+        </div>
+    </button>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/50493593126?text=¡Hola! Me gustaría hacer un pedido" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-40">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </a>
+
+    <!-- Modal del carrito -->
+    <div id="modal-carrito" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-hidden">
+                <!-- Header del modal -->
+                <div class="bg-red-600 text-white p-4 flex justify-between items-center">
+                    <h3 class="text-xl font-bold">🛒 Tu Pedido</h3>
+                    <button onclick="cerrarModal()" class="text-white hover:text-gray-200 text-2xl">&times;</button>
+                </div>
+                
+                <!-- Contenido del carrito -->
+                <div class="p-4 max-h-96 overflow-y-auto">
+                    <div id="items-carrito-modal" class="space-y-3"></div>
+                    <div id="carrito-vacio" class="text-center py-8 text-gray-500">
+                        Tu carrito está vacío
+                    </div>
+                </div>
+                
+                <!-- Footer del modal -->
+                <div id="footer-carrito" class="border-t p-4 hidden">
+                    <div class="flex justify-between items-center text-lg font-bold mb-4">
+                        <span>Total:</span>
+                        <span id="total-carrito-modal">LPS. 0.00</span>
+                    </div>
+                    
+                    <!-- Formulario de datos del cliente -->
+                    <div class="mb-4 space-y-3">
+                        <!-- Tipo de pedido -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de pedido:</label>
+                            <select id="tipo-pedido" onchange="actualizarCamposFormulario()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                                <option value="domicilio">🚚 Envío a domicilio</option>
+                                <option value="llevar">🥡 Para llevar</option>
+                                <option value="restaurante">🍽️ Comer en restaurante</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Nombre (siempre obligatorio) -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+                            <input type="text" id="nombre-cliente" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Tu nombre completo">
+                        </div>
+                        
+                        <!-- Teléfono (obligatorio para domicilio y llevar) -->
+                        <div id="campo-telefono">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono *</label>
+                            <input type="tel" id="telefono-cliente" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Tu número de teléfono">
+                        </div>
+                        
+                        <!-- Dirección (solo para domicilio) -->
+                        <div id="campo-direccion">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Dirección *</label>
+                            <textarea id="direccion-cliente" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" rows="2" placeholder="Tu dirección completa"></textarea>
+                        </div>
+                        
+                        <!-- Número de mesa (solo para restaurante) -->
+                        <div id="campo-mesa" class="hidden">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Número de mesa (opcional)</label>
+                            <input type="number" id="mesa-cliente" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Número de mesa" min="1">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <button onclick="enviarPorWhatsApp()" class="w-full px-6 py-3 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 transition duration-300 flex items-center justify-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            Enviar por WhatsApp
+                        </button>
+                        <button onclick="vaciarCarrito()" class="w-full px-6 py-3 bg-gray-500 text-white font-semibold rounded-md hover:bg-gray-600 transition duration-300">
+                            Vaciar Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Pizzería Deliciosa. Todos los derechos reservados.</p>
+            <p class="text-gray-400 mt-2">📞 Teléfono: (504) 2234-5678 | 📧 Email: info@pizzeriadeliciosa.com</p>
+        </div>
+    </footer>
+
+    <script>
+        let carrito = [];
+        let total = 0;
+        let categoriaActual = 'todas';
+
+        function ordenarProducto(nombre, precio, quantityId) {
+            const cantidad = parseInt(document.getElementById(quantityId).value);
+            const subtotal = precio * cantidad;
+            
+            // Buscar si el producto ya existe en el carrito
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (productoExistente) {
+                productoExistente.cantidad += cantidad;
+                productoExistente.subtotal += subtotal;
+            } else {
+                carrito.push({
+                    id: Date.now() + Math.random(),
+                    nombre: nombre,
+                    precio: precio,
+                    cantidad: cantidad,
+                    subtotal: subtotal,
+                    imagen: obtenerImagenProducto(nombre)
+                });
+            }
+            
+            actualizarCarrito();
+            mostrarNotificacion(`${nombre} agregado al carrito`);
+            
+            // Resetear cantidad a 1
+            document.getElementById(quantityId).value = 1;
+        }
+
+        function actualizarCarrito() {
+            const carritoFlotante = document.getElementById('carrito-flotante');
+            const contadorCarrito = document.getElementById('contador-carrito');
+            const itemsCarritoModal = document.getElementById('items-carrito-modal');
+            const totalCarritoModal = document.getElementById('total-carrito-modal');
+            const carritoVacio = document.getElementById('carrito-vacio');
+            const footerCarrito = document.getElementById('footer-carrito');
+            
+            // Calcular total de items
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            
+            if (carrito.length === 0) {
+                carritoFlotante.classList.add('hidden');
+                carritoVacio.classList.remove('hidden');
+                footerCarrito.classList.add('hidden');
+                return;
+            }
+            
+            // Mostrar botón flotante
+            carritoFlotante.classList.remove('hidden');
+            contadorCarrito.textContent = totalItems;
+            
+            // Actualizar modal
+            carritoVacio.classList.add('hidden');
+            footerCarrito.classList.remove('hidden');
+            itemsCarritoModal.innerHTML = '';
+            total = 0;
+            
+            carrito.forEach((item) => {
+                total += item.subtotal;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'bg-gray-50 rounded-lg p-3';
+                itemDiv.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+                            ${item.imagen}
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-medium text-sm">${item.nombre}</h4>
+                                <button onclick="eliminarDelCarrito('${item.id}')" class="text-red-600 hover:text-red-800 text-lg ml-2">×</button>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-2">
+                                    <button onclick="cambiarCantidad('${item.id}', -1)" class="bg-gray-300 hover:bg-gray-400 text-gray-700 w-6 h-6 rounded-full flex items-center justify-center text-sm">-</button>
+                                    <span class="text-sm font-medium">${item.cantidad}</span>
+                                    <button onclick="cambiarCantidad('${item.id}', 1)" class="bg-gray-300 hover:bg-gray-400 text-gray-700 w-6 h-6 rounded-full flex items-center justify-center text-sm">+</button>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-600">LPS. ${item.precio.toFixed(2)} c/u</div>
+                                    <div class="font-semibold">LPS. ${item.subtotal.toFixed(2)}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                itemsCarritoModal.appendChild(itemDiv);
+            });
+            
+            totalCarritoModal.textContent = `LPS. ${total.toFixed(2)}`;
+        }
+
+        function cambiarCantidad(itemId, cambio) {
+            const item = carrito.find(producto => producto.id == itemId);
+            if (item) {
+                item.cantidad += cambio;
+                if (item.cantidad <= 0) {
+                    eliminarDelCarrito(itemId);
+                    return;
+                }
+                item.subtotal = item.precio * item.cantidad;
+                actualizarCarrito();
+            }
+        }
+
+        function eliminarDelCarrito(itemId) {
+            carrito = carrito.filter(item => item.id != itemId);
+            actualizarCarrito();
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            actualizarCarrito();
+            cerrarModal();
+            mostrarNotificacion('Carrito vaciado');
+        }
+
+        function abrirModal() {
+            document.getElementById('modal-carrito').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-carrito').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function obtenerImagenProducto(nombre) {
+            const imagenes = {
+                'HUT CHEESE MEDIANA': '<div class="w-full h-full bg-gradient-to-br from-yellow-200 to-orange-300 flex items-center justify-center text-2xl">🧀</div>',
+                'PIZZA PEPPERONI': '<div class="w-full h-full bg-gradient-to-br from-red-200 to-red-400 flex items-center justify-center text-2xl">🍕</div>',
+                'PIZZA HAWAIANA': '<div class="w-full h-full bg-gradient-to-br from-yellow-200 to-pink-300 flex items-center justify-center text-2xl">🍍</div>',
+                'PIZZA SUPREMA': '<div class="w-full h-full bg-gradient-to-br from-green-200 to-red-300 flex items-center justify-center text-2xl">🥓</div>',
+                'PIZZA VEGETARIANA': '<div class="w-full h-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center text-2xl">🥬</div>',
+                'PIZZA MARGHERITA': '<div class="w-full h-full bg-gradient-to-br from-red-200 to-green-300 flex items-center justify-center text-2xl">🍅</div>',
+                'COCA COLA 600ML': '<div class="w-full h-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center text-2xl">🥤</div>',
+                'SPRITE 600ML': '<div class="w-full h-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-2xl">🥤</div>',
+                'AGUA PURA 500ML': '<div class="w-full h-full bg-gradient-to-br from-blue-200 to-blue-400 flex items-center justify-center text-2xl">💧</div>',
+                'PAN DE AJO': '<div class="w-full h-full bg-gradient-to-br from-yellow-300 to-orange-400 flex items-center justify-center text-2xl">🥖</div>',
+                'ALITAS BBQ (6 PIEZAS)': '<div class="w-full h-full bg-gradient-to-br from-orange-300 to-red-400 flex items-center justify-center text-2xl">🍗</div>',
+                'PAPAS FRITAS GRANDES': '<div class="w-full h-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-2xl">🍟</div>'
+            };
+            return imagenes[nombre] || '<div class="w-full h-full bg-gray-200 flex items-center justify-center text-2xl">🍽️</div>';
+        }
+
+        function actualizarCamposFormulario() {
+            const tipoPedido = document.getElementById('tipo-pedido').value;
+            const campoTelefono = document.getElementById('campo-telefono');
+            const campoDireccion = document.getElementById('campo-direccion');
+            const campoMesa = document.getElementById('campo-mesa');
+            
+            // Resetear campos
+            campoTelefono.classList.remove('hidden');
+            campoDireccion.classList.add('hidden');
+            campoMesa.classList.add('hidden');
+            
+            // Actualizar etiquetas y visibilidad según el tipo de pedido
+            const labelTelefono = campoTelefono.querySelector('label');
+            const labelDireccion = campoDireccion.querySelector('label');
+            
+            if (tipoPedido === 'domicilio') {
+                labelTelefono.textContent = 'Teléfono *';
+                labelDireccion.textContent = 'Dirección *';
+                campoDireccion.classList.remove('hidden');
+            } else if (tipoPedido === 'llevar') {
+                labelTelefono.textContent = 'Teléfono *';
+            } else if (tipoPedido === 'restaurante') {
+                campoTelefono.classList.add('hidden');
+                campoMesa.classList.remove('hidden');
+            }
+        }
+
+        function validarFormulario() {
+            const tipoPedido = document.getElementById('tipo-pedido').value;
+            const nombre = document.getElementById('nombre-cliente').value.trim();
+            const telefono = document.getElementById('telefono-cliente').value.trim();
+            const direccion = document.getElementById('direccion-cliente').value.trim();
+            
+            // Nombre siempre es obligatorio
+            if (!nombre) {
+                alert('Por favor ingresa tu nombre');
+                return false;
+            }
+            
+            // Validaciones según tipo de pedido
+            if (tipoPedido === 'domicilio') {
+                if (!telefono) {
+                    alert('Por favor ingresa tu teléfono para el envío a domicilio');
+                    return false;
+                }
+                if (!direccion) {
+                    alert('Por favor ingresa tu dirección para el envío a domicilio');
+                    return false;
+                }
+            } else if (tipoPedido === 'llevar') {
+                if (!telefono) {
+                    alert('Por favor ingresa tu teléfono para el pedido para llevar');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        function enviarPorWhatsApp() {
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            if (!validarFormulario()) {
+                return;
+            }
+            
+            const tipoPedido = document.getElementById('tipo-pedido').value;
+            const nombre = document.getElementById('nombre-cliente').value.trim();
+            const telefono = document.getElementById('telefono-cliente').value.trim();
+            const direccion = document.getElementById('direccion-cliente').value.trim();
+            const mesa = document.getElementById('mesa-cliente').value.trim();
+            
+            let mensaje = '🍕 *PEDIDO PIZZERÍA DELICIOSA* 🍕\n\n';
+            
+            // Información del cliente
+            mensaje += '*DATOS DEL CLIENTE:*\n';
+            mensaje += `👤 Nombre: ${nombre}\n`;
+            
+            if (tipoPedido === 'domicilio') {
+                mensaje += `🚚 Tipo: Envío a domicilio\n`;
+                mensaje += `📞 Teléfono: ${telefono}\n`;
+                mensaje += `📍 Dirección: ${direccion}\n`;
+            } else if (tipoPedido === 'llevar') {
+                mensaje += `🥡 Tipo: Para llevar\n`;
+                mensaje += `📞 Teléfono: ${telefono}\n`;
+            } else if (tipoPedido === 'restaurante') {
+                mensaje += `🍽️ Tipo: Comer en restaurante\n`;
+                if (mesa) {
+                    mensaje += `🪑 Mesa: ${mesa}\n`;
+                }
+            }
+            
+            mensaje += '\n*PRODUCTOS:*\n';
+            
+            carrito.forEach(item => {
+                mensaje += `• ${item.nombre}\n`;
+                mensaje += `  Cantidad: ${item.cantidad}\n`;
+                mensaje += `  Precio unitario: LPS. ${item.precio.toFixed(2)}\n`;
+                mensaje += `  Subtotal: LPS. ${item.subtotal.toFixed(2)}\n\n`;
+            });
+            
+            mensaje += `*TOTAL: LPS. ${total.toFixed(2)}*\n\n`;
+            mensaje += '¡Gracias por tu pedido! 😊';
+            
+            const numeroWhatsApp = '50493593126';
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            
+            window.open(url, '_blank');
+        }
+
+        function filtrarCategoria(categoria) {
+            categoriaActual = categoria;
+            const productos = document.querySelectorAll('.producto-card');
+            const botones = document.querySelectorAll('.categoria-btn');
+            
+            // Actualizar botones
+            botones.forEach(btn => {
+                btn.classList.remove('bg-red-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-red-600', 'text-white');
+            
+            // Filtrar productos
+            productos.forEach(producto => {
+                if (categoria === 'todas' || producto.dataset.categoria === categoria) {
+                    producto.style.display = 'flex';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        function mostrarNotificacion(mensaje) {
+            const notificacion = document.createElement('div');
+            notificacion.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg z-50 transition-opacity duration-300';
+            notificacion.textContent = mensaje;
+            document.body.appendChild(notificacion);
+            
+            setTimeout(() => {
+                notificacion.style.opacity = '0';
+                setTimeout(() => {
+                    if (document.body.contains(notificacion)) {
+                        document.body.removeChild(notificacion);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('modal-carrito').addEventListener('click', function(e) {
+            if (e.target === this) {
+                cerrarModal();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f557b730fb5ea7',t:'MTc1NzkxMDE0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
