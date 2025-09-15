@@ -328,59 +328,60 @@
   </div>
 
   <script>
-    // Contador de cantidad por producto
-    document.querySelectorAll('article').forEach(card => {
-      const btnMenor = card.querySelector('.cantidad-menor');
-      const btnMayor = card.querySelector('.cantidad-mayor');
-      const numero = card.querySelector('.cantidad-numero');
-      btnMenor.addEventListener('click', () => {
-        let valor = parseInt(numero.textContent, 10);
-        if (valor > 1) numero.textContent = valor - 1;
-      });
-      btnMayor.addEventListener('click', () => {
-        let valor = parseInt(numero.textContent, 10);
-        numero.textContent = valor + 1;
-      });
-
-      // Modal de éxito al ordenar
-      const btnOrdenar = card.querySelector('.btn-ordenar');
-      btnOrdenar.addEventListener('click', () => {
-        // Extraer datos del producto
-        const nombre = card.querySelector('.producto-nombre').textContent;
-        const desc = card.querySelector('.producto-desc').textContent;
-        const precioRaw = card.querySelector('.producto-precio').textContent;
-        const cantidad = parseInt(numero.textContent, 10);
-        const imgSrc = card.querySelector('.producto-img').src;
-        // Obtener monto total (extraer número de precio)
-        const montoUnitario = parseFloat(precioRaw.replace(/[^\d\.]/g, ''));
-        const montoTotal = montoUnitario * cantidad;
-        // Mostrar en el modal
-        const modal = document.getElementById('modal-exito');
-        const detalles = document.getElementById('modal-detalles');
-        detalles.innerHTML = `
-          <div class="flex items-center gap-3 mb-3">
-            <img src="${imgSrc}" alt="${nombre}" class="w-16 h-16 object-cover rounded">
-            <div>
-              <div class="font-bold text-hutRed">${nombre}</div>
-              <div class="text-xs">${desc}</div>
-            </div>
-          </div>
-          <div><span class="font-bold">Cantidad:</span> ${cantidad}</div>
-          <div><span class="font-bold">Precio unitario:</span> ${precioRaw}</div>
-          <div><span class="font-bold">Monto total:</span> <span class="text-hutRed font-bold">LPS. ${montoTotal.toFixed(2)}</span></div>
-          <div class="mt-2 text-hutGreen font-bold">¡Tu producto ha sido agregado a la orden!</div>
-        `;
-        modal.classList.remove('hidden');
-      });
+  // Contador de cantidad por producto
+  document.querySelectorAll('article').forEach(card => {
+    const btnMenor = card.querySelector('.cantidad-menor');
+    const btnMayor = card.querySelector('.cantidad-mayor');
+    const numero = card.querySelector('.cantidad-numero');
+    btnMenor.addEventListener('click', () => {
+      let valor = parseInt(numero.textContent, 10);
+      if (valor > 1) numero.textContent = valor - 1;
+    });
+    btnMayor.addEventListener('click', () => {
+      let valor = parseInt(numero.textContent, 10);
+      numero.textContent = valor + 1;
     });
 
-    // Cierre del modal
-    document.getElementById('cerrar-modal').onclick = () => {
-      document.getElementById('modal-exito').classList.add('hidden');
-    };
-    document.getElementById('btn-modal-ok').onclick = () => {
-      document.getElementById('modal-exito').classList.add('hidden');
-    };
-  </script>
+    // Modal de éxito al ordenar
+    const btnOrdenar = card.querySelector('.btn-ordenar');
+    btnOrdenar.addEventListener('click', () => {
+      // Extraer datos del producto
+      const nombre = card.querySelector('.producto-nombre').textContent;
+      const desc = card.querySelector('.producto-desc').textContent;
+      const precioRaw = card.querySelector('.producto-precio').textContent;
+      const cantidad = parseInt(numero.textContent, 10);
+      const imgSrc = card.querySelector('.producto-img').src;
+      // Obtener monto total (extraer número de precio)
+      const matchPrecio = precioRaw.match(/(\d+(\.\d+)?)/);
+      const montoUnitario = matchPrecio ? parseFloat(matchPrecio[0]) : 0;
+      const montoTotal = montoUnitario * cantidad;
+      // Mostrar en el modal
+      const modal = document.getElementById('modal-exito');
+      const detalles = document.getElementById('modal-detalles');
+      detalles.innerHTML = `
+        <div class="flex items-center gap-3 mb-3">
+          <img src="${imgSrc}" alt="${nombre}" class="w-16 h-16 object-cover rounded">
+          <div>
+            <div class="font-bold text-hutRed">${nombre}</div>
+            <div class="text-xs">${desc}</div>
+          </div>
+        </div>
+        <div><span class="font-bold">Cantidad:</span> ${cantidad}</div>
+        <div><span class="font-bold">Precio unitario:</span> ${precioRaw}</div>
+        <div><span class="font-bold">Monto total:</span> <span class="text-hutRed font-bold">LPS. ${montoTotal.toFixed(2)}</span></div>
+        <div class="mt-2 text-hutGreen font-bold">¡Tu producto ha sido agregado a la orden!</div>
+      `;
+      modal.classList.remove('hidden');
+    });
+  });
+
+  // Cierre del modal
+  document.getElementById('cerrar-modal').onclick = () => {
+    document.getElementById('modal-exito').classList.add('hidden');
+  };
+  document.getElementById('btn-modal-ok').onclick = () => {
+    document.getElementById('modal-exito').classList.add('hidden');
+  };
+</script>
 </body>
 </html>
